@@ -16,19 +16,20 @@ class SourcesTableCollectionCell: UICollectionViewCell {
             tableView.reloadData()
         }
     }
-    
+    let navController: UINavigationController!
     override func awakeFromNib() {
         super.awakeFromNib()
         //MARK: - Проблема: Нижняя ячейка не не влазит в tableView
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 120, right: 0)  // Хотелось бы найти альтернативу
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 140, right: 0)  // Хотелось бы найти альтернативу этому решению
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
     }
     
-    func setupCell(sources: [Source]) {
+    func setupCell(sources: [Source], nav: UINavigationController) {
         self.sources = sources
         tableView.reloadData()
+        self.navController = 
     }
     
 }
@@ -45,4 +46,7 @@ extension SourcesTableCollectionCell: UITableViewDataSource, UITableViewDelegate
         return cell
     }
   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

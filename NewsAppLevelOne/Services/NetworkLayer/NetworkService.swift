@@ -10,7 +10,7 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func getSources(completion: @escaping (Result<NewsSourcesData?, Error>) -> Void)
-    func getSourceArticles(sourceId: String, comletion:  @escaping (Result<NewsSourcesData?, Error>) -> Void )
+    func getSourceArticles(sourceId: String, completion:  @escaping (Result<NewsArticlesData?, Error>) -> Void )
 }
 enum NewsAPIPath: String {
     case api = "https://newsapi.org/v2/top-headlines"
@@ -27,13 +27,11 @@ class NetworkService: NetworkServiceProtocol {
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
-                
                 completion(.failure(error))
                 return
             }
             
             do {
-                
                 let obj = try JSONDecoder().decode(NewsSourcesData.self, from: data!)
                 completion(.success((obj)))
             } catch {
@@ -42,9 +40,22 @@ class NetworkService: NetworkServiceProtocol {
         }.resume()
     }
     
-    func getSourceArticles(sourceId: String, comletion: @escaping (Result<NewsSourcesData?, Error>) -> Void) {
+    func getSourceArticles(sourceId: String, completion: @escaping (Result<NewsArticlesData?, Error>) -> Void) {
         let urlString = NewsAPIPath.api.rawValue + NewsAPIPath.sourcesSearching.rawValue + sourceId + "&" + NewsAPIPath.apiKey.rawValue
         guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            do {
+                let obj = try JSONDecoder().decode(NewsArticlesData.self, from: data!)
+                completion(.success((obj)))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
     }
     
 }
