@@ -39,7 +39,7 @@ class NetworkService: NetworkServiceProtocol {
             }
         }.resume()
     }
-    
+   
     func getSourceArticles(sourceId: String, completion: @escaping (Result<NewsArticlesData?, Error>) -> Void) {
         let urlString = NewsAPIPath.api.rawValue + NewsAPIPath.sourcesSearching.rawValue + sourceId + "&" + NewsAPIPath.apiKey.rawValue
         guard let url = URL(string: urlString) else { return }
@@ -50,6 +50,7 @@ class NetworkService: NetworkServiceProtocol {
                 return
             }
             do {
+                print(data!)
                 let obj = try JSONDecoder().decode(NewsArticlesData.self, from: data!)
                 completion(.success((obj)))
             } catch {

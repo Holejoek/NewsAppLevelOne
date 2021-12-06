@@ -10,31 +10,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AriclesTableCollectionCell" customModule="NewsAppLevelOne">
-            <rect key="frame" x="0.0" y="0.0" width="318" height="408"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ArticlesCollectionViewCell" customModule="NewsAppLevelOne" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="438" height="338"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="318" height="408"/>
+                <rect key="frame" x="0.0" y="0.0" width="438" height="338"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a8v-8H-thW">
-                        <rect key="frame" x="0.0" y="0.0" width="318" height="408"/>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JpN-Yd-h81">
+                        <rect key="frame" x="0.0" y="0.0" width="438" height="338"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </tableView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="a8v-8H-thW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BEJ-3p-ZWj"/>
-                <constraint firstAttribute="trailing" secondItem="a8v-8H-thW" secondAttribute="trailing" id="dxM-cE-0P9"/>
-                <constraint firstAttribute="bottom" secondItem="a8v-8H-thW" secondAttribute="bottom" id="ghh-TN-7qh"/>
-                <constraint firstItem="a8v-8H-thW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mBQ-sf-t0c"/>
+                <constraint firstItem="JpN-Yd-h81" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8TC-i4-vVE"/>
+                <constraint firstAttribute="bottom" secondItem="JpN-Yd-h81" secondAttribute="bottom" id="ALu-Xb-ssD"/>
+                <constraint firstItem="JpN-Yd-h81" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BYJ-Zc-C4d"/>
+                <constraint firstAttribute="trailing" secondItem="JpN-Yd-h81" secondAttribute="trailing" id="KQx-Bz-vrX"/>
             </constraints>
-            <size key="customSize" width="318" height="408"/>
+            <size key="customSize" width="438" height="338"/>
             <connections>
-                <outlet property="tableView" destination="a8v-8H-thW" id="viR-tc-J2i"/>
+                <outlet property="tableView" destination="JpN-Yd-h81" id="m3u-p6-qTO"/>
             </connections>
-            <point key="canvasLocation" x="331.8840579710145" y="102.45535714285714"/>
+            <point key="canvasLocation" x="418.84057971014494" y="172.76785714285714"/>
         </collectionViewCell>
     </objects>
     <resources>

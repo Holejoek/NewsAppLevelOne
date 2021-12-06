@@ -19,8 +19,8 @@ class SourceScreenViewController: UIViewController {
         }
     }
    
-    var copyOfSources = [Source]()   // Создано для реализации поиска источников
-    
+    private var copyOfSources = [Source]()   // Создано для реализации поиска источников
+    private let heightOfSectionHeader: CGFloat = 80
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavController()
@@ -43,6 +43,10 @@ class SourceScreenViewController: UIViewController {
         self.navigationController?.navigationItem.title = "Sources"
         self.navigationController?.navigationBar.isHidden = false
     }
+    
+    func goNextScreen(sourceId: String){
+         viewModel.goNextScreen(sourceId: sourceId, nav: self.navigationController!)
+    }
 }
 
 //MARK: CollectionViewSetup
@@ -57,12 +61,12 @@ extension SourceScreenViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SourcesTableCollectionCell", for: IndexPath(item: 0, section: 1)) as! SourcesTableCollectionCell
-        cell.setupCell(sources: sources)
+        cell.setupCell(sources: sources, vc: self)  // как переход между экранами реализовать?
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height:  UIScreen.main.bounds.height)
+        return CGSize(width: UIScreen.main.bounds.width, height: collectionView.frame.height  - heightOfSectionHeader)
     }
     
     
@@ -80,7 +84,7 @@ extension SourceScreenViewController: UICollectionViewDelegate, UICollectionView
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 1 { return CGSize.zero }
-        return CGSize(width: UIScreen.main.bounds.width, height: 80)
+        return CGSize(width: UIScreen.main.bounds.width, height: heightOfSectionHeader)
     }
     
    

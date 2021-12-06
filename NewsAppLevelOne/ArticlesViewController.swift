@@ -11,38 +11,50 @@ class ArticlesViewController: UIViewController {
 
     @IBOutlet weak var articlesCollectionView: UICollectionView!
     
-    var articles = [Article]()
+    var articles = [Article](){
+        didSet{
+                self.articlesCollectionView.reloadData()
+        }
+    }
     let viewModel = ArticlesViewModel()
     var sourceId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        articlesCollectionView.register(UINib(nibName: "ArticlesTableCollectionCell", bundle: nil), forCellWithReuseIdentifier: "ArticlesTableCollectionCell")
-        viewModel.getAtriclesFromSource(sourceId: sourceId)
+        articlesCollectionView.backgroundColor = .blue
+        articlesCollectionView.register(UINib(nibName: "ArticlesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArticlesCollectionViewCell")
+        articlesCollectionView.dataSource = self
+        articlesCollectionView.delegate = self
+            self.viewModel.getAtriclesFromSource(sourceId: self.sourceId)
         viewModel.articles.bind { [weak self] articles in
             self?.articles = articles
-            self?.articlesCollectionView.reloadData()
         }
     }
-    init(sourceId: String) {
-        super.init(nibName: nil, bundle: nil)
-        self.sourceId = sourceId
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   
 }
 
-extension ArticlesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ArticlesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AriclesTableCollectionCell", for: indexPath) as! AriclesTableCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticlesCollectionViewCell", for: indexPath) as! ArticlesCollectionViewCell
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = cell.center
+        cell.addSubview(activityIndicator)
+        if articles.isEmpty {
+            activityIndicator.startAnimating()
+            
+        } else {
+            activityIndicator.stopAnimating()
+        }
         cell.setupCell(articles: articles)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: articlesCollectionView.frame.height)
     }
     
     
