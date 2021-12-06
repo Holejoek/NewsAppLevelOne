@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-typealias SourceInfo = (id: String, name: String, description: String)
+//typealias SourceInfo = (id: String, name: String, description: String)
 class SourcesViewModel {
     
     let networkService = NetworkService()

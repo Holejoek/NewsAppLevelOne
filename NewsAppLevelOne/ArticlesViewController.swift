@@ -21,6 +21,7 @@ class ArticlesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false  
         articlesCollectionView.backgroundColor = .blue
         articlesCollectionView.register(UINib(nibName: "ArticlesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArticlesCollectionViewCell")
         articlesCollectionView.dataSource = self

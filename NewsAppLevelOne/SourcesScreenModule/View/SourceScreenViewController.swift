@@ -40,8 +40,7 @@ class SourceScreenViewController: UIViewController {
         sourcesCollectionView.delegate = self
     }
     private func setupNavController() {
-        self.navigationController?.navigationItem.title = "Sources"
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func goNextScreen(sourceId: String){

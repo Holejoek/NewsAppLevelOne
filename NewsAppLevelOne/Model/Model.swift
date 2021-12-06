@@ -40,8 +40,19 @@ struct Article: Codable {
     let description: String?
     let url: String?
     let urlToImage: String?
-    let publishedAt: String?
+    let publishedAt: String
     let content: String?
+    
+    private static let dateFormatter: DateFormatter = {
+      var formatter = DateFormatter()
+      formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+      return formatter
+    }()
+
+    var convertDate: Date {
+      
+        return Self.dateFormatter.date(from: publishedAt) ?? Date()
+        }
 
 }
 

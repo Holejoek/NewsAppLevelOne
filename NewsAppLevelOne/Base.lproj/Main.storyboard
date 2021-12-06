@@ -121,11 +121,56 @@
                     <navigationItem key="navigationItem" id="ZiI-Uf-Vyd"/>
                     <connections>
                         <outlet property="articlesCollectionView" destination="jYR-r9-VgF" id="hbG-My-7BY"/>
+                        <segue destination="Y2k-jl-9zJ" kind="show" id="rT8-DO-NJJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2y-8o-LCC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1817" y="98"/>
+            <point key="canvasLocation" x="1845" y="98"/>
+        </scene>
+        <!--Full Screen Article View Controller-->
+        <scene sceneID="tpV-gn-vc4">
+            <objects>
+                <viewController storyboardIdentifier="FullScreenArticleViewController" id="Y2k-jl-9zJ" customClass="FullScreenArticleViewController" customModule="NewsAppLevelOne" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ehy-wH-ZIQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7i1-PA-KVm">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MvO-N9-gau">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="94m-8u-kRh">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qMV-UT-1OP">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N8G-it-rHq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7i1-PA-KVm" firstAttribute="top" secondItem="N8G-it-rHq" secondAttribute="top" id="RfU-c5-Nzu"/>
+                            <constraint firstItem="N8G-it-rHq" firstAttribute="trailing" secondItem="7i1-PA-KVm" secondAttribute="trailing" id="dWZ-8A-VFo"/>
+                            <constraint firstItem="N8G-it-rHq" firstAttribute="bottom" secondItem="7i1-PA-KVm" secondAttribute="bottom" id="lYw-9W-BHG"/>
+                            <constraint firstItem="7i1-PA-KVm" firstAttribute="leading" secondItem="N8G-it-rHq" secondAttribute="leading" id="rVb-an-edo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pDb-jB-Wdq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMJ-uI-J4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2730" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F5G-ge-bho">
